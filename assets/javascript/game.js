@@ -24,6 +24,8 @@
 //i = 0, i<9, i++
 
 //random letters function resource - it is my understanding that the below function spits out a random letter using Math.random and letter length: https://stackoverflow.com/questions/29505419/choosing-a-random-letter-from-a-z
+//DOM content event listener needs to be input for JS to work with HTML
+//document.onkeyup
 
 function randomLetter() {
     let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
