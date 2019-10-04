@@ -2,12 +2,6 @@
 //resource: video Jim provided in Slack: https://www.youtube.com/watch?v=Nau-iEEgEoM
 //resource for understanding for loop and breaks and a good example of a guessing game: https://youtu.be/qdcPmQdrJac
 
-
-//wins and losses begin with 0
-//guesses begins with 9
-//the choices the user can choose are the 26 letters of the alphabet
-//the computer's correct answer is chosen at random
-
 //when the user types a letter on their keyboard, that letter should appear under the guesses so far
 //when the user types a letter of their keyboard, the number of guesses should go down from 9
 //if the user chooses the right number the number of wins should go up and the game should reset
@@ -33,11 +27,42 @@ function randomLetter() {
     return letter;
   }
 
-let guess;
-let wins = 0
-let losses = 0
-let guessesleft = 9
+let guesses = '';
+let wins = 0;
+let losses = 0;
+let guessesleft = 9;
 // correctAnswer is defined by the randomLetter function above
 let correctAnswer = randomLetter;
+
+function choice () {
+    onclick
+    compare with correctAnswer
+    if correct then reset
+    if not then do nothing
+    
+}
+
+function addGuesses {
+    if incorrect answer then display letter
+    if correct then do nothing
+}
+
+function guessesLeft {
+    if incorrect answer then decrease guessesLeft
+    if correct then reset to 9
+    if guessesLeft is equal to zero then reset game
+}
+
+function addWins() {
+    if correct answer then increase wins
+    if incorrect answer then do nothing
+}
+
+function addLosses {
+    if incorrect answer then increase losses
+    if correct then do nothing
+}
+
+
 
 
