@@ -29,16 +29,31 @@ let updateGuessedLetters = function (guessedLettersRef) {
 };
 updateGuessedLetters('.');
 
+let clearGuessesLeft = function (guessesRef) {
+  document.querySelector("#guessesLeft").innerHTML = 0;
+}
+clearGuessesLeft ("0");
+
 let updateGuessesLeft = function () {
   document.querySelector("#guessesLeft").innerHTML = guessesLeft;
 };
-updateGuessesLeft();
+updateGuessesLeft("0");
 
 let updateWins = function () {
   document.querySelector("#wins").innerHTML = wins;
 };
 updateWins();
+
 //document.onkeyup function resource: https://www.youtube.com/watch?v=Tio88WjwFO0
+
+console.log(guessedLetters);
+
+
+
+//the main keyup event function
+
+
+
 
 document.onkeyup = function (event) {
   let letter = event.key.toLowerCase();
@@ -55,63 +70,41 @@ document.onkeyup = function (event) {
     // same as: document.querySelector("#wins").innerHTML = wins;
     let winsSpan = document.querySelector("#wins");
     winsSpan.innerHTML = wins;
-    //** */reset game: all choices clear, guesses left is back to 9, computer picks new random letter
-    // clear choices
-
-
-  } else {
+    //clear choices
+    updateGuessedLetters(".");
+    randomLetter(); //pick another random letter to restart game
+  }
+   else {
+    guessesLeft = guessesLeft - 1; //subtract one guess
+    let leftSpan = document.querySelector("#guessesLeft");
+    leftSpan.innerHTML = guessesLeft;
+    //trying a for loop so when the guesses left hits 9 it resets?
+    if (guessesLeft === 0) {
+      losses = losses + 1; //when it's zero losses go up by 1
+      let lossesSpan = document.querySelector("#losses");
+      lossesSpan.innerHTML = losses;
+      let guessesLeftSpan = document.querySelector("#guessesLeft");
+      guessesLeftSpan.innerHTML = guessesLeft;
+      updateGuessedLetters(".");
+      randomLetter();
+    } else {
+    };
+    //clear if guessed letters = 
+    }
+    };
+        //  let guessesLeftSpan = document.querySelector("#guessesLeft");
+    //   guessesLeftSpan.innerHTML = guessesLeft;
     // document.querySelector("#guessesleft").innerHTML = guessesLeft;
-    // decrrease guesses left by 1
-    // increase losses by 1
     // clear choices 
-
+    //** */reset game: all choices clear, guesses left is back to 9, computer picks new random letter
     // if total guesses exhausted
-  };
-
-};
-
-// if (letter == correctAnswer) {
-//     document.querySelector("#wins").appendChild = +1;  
-// } else {
-//     document.querySelector("#guessesleft").innerHTML = guessesLeft;
-// };
-//for rest of onkeyup function:
-//logic for correct guess compare my guess with computer guess
-//in the same keyup logic as line 40
-//record key stroke, push into array, then compare keystroke to computer guess
-
-
-//create a brand new function to reset when win or lose
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 //let guesses = String.fromCharCode(event.keyCode).
 // toLowerCase;
 
-// let correctAnswer = randomLetter;
-
 // if the user guess equals the computer's answer then the user's wins increase by 1 or else the losses inscrease by 1 AND the guesses left is decreased by 1
-
-//     if (guesses === correctAnswer){ 
-//         wins ++;
-//         alert(Wins: "" + wins || game resets);
-//     } else { losses ++ 1 && guessesLeft -- 1
-//         }
-//     };
-
 // // if guesses left === 0 then the game resets
 
 //     if (guessesLeft === "0") {
@@ -137,4 +130,3 @@ document.onkeyup = function (event) {
 //need to define what the random letter is for each game
 
    // wins += 1;
-    // wins++;
