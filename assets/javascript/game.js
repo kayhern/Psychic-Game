@@ -21,14 +21,13 @@ let guessesLeft = 9;
 // correctAnswer is defined by the randomLetter function above
 let correctAnswer = randomLetter();
 console.log(correctAnswer)
-
 //correctAnswer = computer's guess
 let guessedLetters = []; //guessed letters array - push the letter of "my guess" into this array - should display letters of my guess
 
 let updateGuessedLetters = function (guessedLettersRef) {
   document.querySelector("#guessed").innerHTML = guessedLettersRef;
 };
-updateGuessedLetters('');
+updateGuessedLetters('.');
 
 let updateGuessesLeft = function () {
   document.querySelector("#guessesLeft").innerHTML = guessesLeft;
@@ -44,27 +43,19 @@ updateWins();
 document.onkeyup = function (event) {
   let letter = event.key.toLowerCase();
   console.log(letter + " my guess");
-
   //select element, display pressed letters
   guessedLetters.push(letter); //push to array
   updateGuessedLetters(guessedLetters); // display array
-
-
   //compare input with computer choice
-  if (letter === correctAnswer) {// use ===, not ==
+  if (letter === correctAnswer) {
     // document.querySelector("#wins").appendChild = +1;
-
     //increase wins by 1, 
     wins = wins + 1;
-    // wins += 1;
-    // wins++;
-
     // assign wins to span#wins
     // same as: document.querySelector("#wins").innerHTML = wins;
     let winsSpan = document.querySelector("#wins");
     winsSpan.innerHTML = wins;
-
-    //reset game: all choices clear, guesses left is back to 9, computer picks new random letter
+    //** */reset game: all choices clear, guesses left is back to 9, computer picks new random letter
     // clear choices
 
 
@@ -144,3 +135,6 @@ document.onkeyup = function (event) {
 //if the person guesses the correct letter then wins go up by 1
 //if the person guesses 9 guesses without the correct letter then losses goes up by 1
 //need to define what the random letter is for each game
+
+   // wins += 1;
+    // wins++;
