@@ -1,6 +1,6 @@
 //resource: video Jim provided in Slack: https://www.youtube.com/watch?v=SBwoFkRjZvE
 //resource: video Jim provided in Slack: https://www.youtube.com/watch?v=Nau-iEEgEoM
-//resource for understanding for loop and breaks and a good example of a guessing game: https://youtu.be/qdcPmQdrJac
+//resource for understanding: a good example of a guessing game: https://youtu.be/qdcPmQdrJac
 //random letters function resource - it is my understanding that the below function spits out a random letter using Math.random and letter length: https://stackoverflow.com/questions/29505419/choosing-a-random-letter-from-a-z
 //DOM content event listener needs to be input for JS to work with HTML
 
@@ -12,21 +12,22 @@ function randomLetter() {
   console.log(letter + " computer guess");
   return letter;
 }
-// randomLetter();
+randomLetter();
 
+//variables:
 let wins = 0;
 let losses = 0;
 let guessesLeft = 9;
-//update guesses left
 // correctAnswer is defined by the randomLetter function above
 let correctAnswer = randomLetter();
 console.log(correctAnswer)
 //correctAnswer = computer's guess
 let guessedLetters = []; //guessed letters array - push the letter of "my guess" into this array - should display letters of my guess
 
+//other functions that may be needed
 let updateGuessedLetters = function (guessedLettersRef) {
   document.querySelector("#guessed").innerHTML = guessedLettersRef;
-};
+};//update the html to be the guessed letters
 updateGuessedLetters('.');
 
 let clearGuessesLeft = function (guessesRef) {
@@ -48,29 +49,26 @@ updateWins();
 
 console.log(guessedLetters);
 
-
-
 //the main keyup event function
-
-
-
 
 document.onkeyup = function (event) {
   let letter = event.key.toLowerCase();
   console.log(letter + " my guess");
+
   //select element, display pressed letters
   guessedLetters.push(letter); //push to array
   updateGuessedLetters(guessedLetters); // display array
   //compare input with computer choice
+
   if (letter === correctAnswer) {
     // document.querySelector("#wins").appendChild = +1;
-    //increase wins by 1, 
-    wins = wins + 1;
+    //increase wins by 1,
     // assign wins to span#wins
     // same as: document.querySelector("#wins").innerHTML = wins;
+    //clear choices 
+    wins = wins + 1;
     let winsSpan = document.querySelector("#wins");
     winsSpan.innerHTML = wins;
-    //clear choices
     updateGuessedLetters(".");
     randomLetter(); //pick another random letter to restart game
   }
@@ -79,54 +77,25 @@ document.onkeyup = function (event) {
     let leftSpan = document.querySelector("#guessesLeft");
     leftSpan.innerHTML = guessesLeft;
     //trying a for loop so when the guesses left hits 9 it resets?
+    };
+
     if (guessesLeft === 0) {
-      losses = losses + 1; //when it's zero losses go up by 1
+      losses = losses + 1; //when guesses left = zero losses go up by 1
       let lossesSpan = document.querySelector("#losses");
       lossesSpan.innerHTML = losses;
+      updateGuessedLetters(".");
+      randomLetter();
+    if (guessesLeft === 0) {
+      guessesLeft = guessesLeft + 9;
       let guessesLeftSpan = document.querySelector("#guessesLeft");
       guessesLeftSpan.innerHTML = guessesLeft;
       updateGuessedLetters(".");
-      randomLetter();
-    } else {
+    } 
+    if (guessesLeft === 0) {
+      guessedLetters = (".");
+      let guessedLettersSpan = document.querySelector("#guessed")
+      guessedLettersSpan.innerHTML = guessedLetters; //reset the letters
+      randomLetter(); 
+    };}
     };
-    //clear if guessed letters = 
-    }
-    };
-        //  let guessesLeftSpan = document.querySelector("#guessesLeft");
-    //   guessesLeftSpan.innerHTML = guessesLeft;
-    // document.querySelector("#guessesleft").innerHTML = guessesLeft;
-    // clear choices 
     //** */reset game: all choices clear, guesses left is back to 9, computer picks new random letter
-    // if total guesses exhausted
-
-
-
-//let guesses = String.fromCharCode(event.keyCode).
-// toLowerCase;
-
-// if the user guess equals the computer's answer then the user's wins increase by 1 or else the losses inscrease by 1 AND the guesses left is decreased by 1
-// // if guesses left === 0 then the game resets
-
-//     if (guessesLeft === "0") {
-//          game guesses reset
-//     } else {nothing should happen};
-
-//      + "<p>Guesses Left:</p>" + "<p>Your Guesses so far:</p>"
-
-//     document.querySelector("#psychic-game").innerHTML = html;
-
-
-
-//when the user types a letter on their keyboard, that letter should appear under the guesses so far
-//when the user types a letter of their keyboard, the number of guesses should go down from 9
-//if the user chooses the right number the number of wins should go up and the game should reset
-//if the user chooses 9 letters that are wrong, it should reset 
-//if the user chooses 9 letters that are wrong, losses should increase by 1
-
-//guesses so far lists all the letters the person guesses with a comma in between each guess
-//once guesses counts down to 0 then guesses so far resets to nothing
-//if the person guesses the correct letter then wins go up by 1
-//if the person guesses 9 guesses without the correct letter then losses goes up by 1
-//need to define what the random letter is for each game
-
-   // wins += 1;
