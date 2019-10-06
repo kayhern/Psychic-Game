@@ -98,4 +98,4 @@ document.onkeyup = function (event) {
       randomLetter(); 
     };}
     };
-    //** */reset game: all choices clear, guesses left is back to 9, computer picks new random letter
+    //**resetting the game: all choices clear from guessed letters and computer picks new random letter --these are the things I was not able to quite accomplish -- did I need a new function to reset both of these??
